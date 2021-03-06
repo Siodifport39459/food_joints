@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import FoodItem from '../../pages/food/food.component'
 
 import './menu-item.styles.scss';
 
@@ -9,10 +10,16 @@ const MenuItem = ({title,imageUrl}) => (
     
         className='menu-item'>
         <div className='content'>
-        <Link className="option" to="/">{title} </Link>
-            
+        <Link
+  to={{
+    pathname: "/food",
+    data: {title} // your data array of objects
+  }}
+>{title}</Link>
         </div>
-    </div>
-)
+       </div> 
+    
+        )
+    
 
 export default MenuItem;

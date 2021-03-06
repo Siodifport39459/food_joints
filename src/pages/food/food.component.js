@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import "./Food.css";
+import "./food.styles.css";
 import Axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Recipe from "../../components/Recipe";
 import Alert from "../../components/Alert";
 
-function Food() {
-  const [query, setQuery] = useState("");
+const FoodItem=()=> {
+  const [title]=useState("bangalore","kochi","hyderabad");
+  const [query, setQuery] = useState(title,"");
+  //const query={this:title}
   const [recipes, setRecipes] = useState([]);
   const [alert, setAlert] = useState("");
 
@@ -23,7 +25,7 @@ function Food() {
       }
       console.log(result);
       setRecipes(result.data.hits);
-      setQuery("");
+      setQuery("bangalore");
       setAlert("");
     } else {
       setAlert("Please fill the form");
@@ -39,7 +41,7 @@ function Food() {
 
   return (
     <div className="App">
-      <h1>Food Searching App</h1>
+      <h1>The Restaurants are</h1>
       <form onSubmit={onSubmit} className="search-form">
         {alert !== "" && <Alert alert={alert} />}
         <input
@@ -60,4 +62,4 @@ function Food() {
   );
 }
 
-export default Food;
+export default FoodItem;
